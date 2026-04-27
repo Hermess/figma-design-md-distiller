@@ -12,6 +12,15 @@
 extraction-manifest.md
 ```
 
+如果接入的是旧版 `design.md`，且不存在 `extraction-manifest.md`，必须先从以下信息反推创建 manifest：
+
+1. `规范来源` 表中的 Figma 链接、fileKey、nodeId；
+2. 截图资产清单中的截图路径和节点 ID；
+3. 组件清单中的契约位置；
+4. 页面 Example 分类和截图引用。
+
+旧版接入时不要立即重写正文。先生成 manifest，再执行后续增量。
+
 manifest 是节点级状态表，用来追踪：
 
 - 哪些节点已抽取；

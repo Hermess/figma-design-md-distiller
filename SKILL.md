@@ -51,6 +51,10 @@ description: 将 Figma 组件库、页面样例、视觉规范和截图资产蒸
 - `references/contracts/`：当组件契约过多时拆分出的长契约；
 - `design-md-check.md`：质量检查报告。
 
+技能包自身附带：
+
+- `PRESSURE_TEST.md`：使用真实数字浙江 Figma 组件库素材进行的压测记录、暴露问题和修正规则。
+
 ## 工作流索引
 
 执行时按任务类型加载对应规则：
@@ -86,8 +90,10 @@ description: 将 Figma 组件库、页面样例、视觉规范和截图资产蒸
 - 页面 example 必须和组件清单分离；
 - 超宽、超高、过扁截图必须补局部截图；
 - 已存在 `design.md` 时默认增量合并，保护用户手工修改；
+- 旧版 `design.md` 若没有 `extraction-manifest.md`，必须先从来源表、截图清单、组件清单和页面 Example 反推 manifest；
 - 组件契约超过 20 条时启动分卷，避免主 `design.md` 过大；
 - 所有 Figma 节点必须进入 manifest，不能只凭聊天记录记忆。
+- 截图清晰度阈值优先依据 Figma metadata 的原始节点尺寸，本地 PNG 导出尺寸只作辅助判断。
 
 ## 目录建议
 
@@ -102,4 +108,3 @@ description: 将 Figma 组件库、页面样例、视觉规范和截图资产蒸
     screenshots/
       archive/
 ```
-

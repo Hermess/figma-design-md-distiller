@@ -39,6 +39,7 @@ SKILL.md
 figma-design-md-distiller/
   SKILL.md
   README.md
+  PRESSURE_TEST.md
   rules/
     01-input-routing.md
     02-figma-extraction.md
@@ -87,6 +88,8 @@ figma-design-md-distiller/
 | `screenshots/` | 本地清晰截图资产 |
 | `references/contracts/` | 当组件契约过多时存放分卷契约 |
 | `design-md-check.md` | 质量检查报告 |
+
+技能包根目录中的 `PRESSURE_TEST.md` 记录了使用真实数字浙江 Figma 组件库素材进行的压测结果。
 
 ## 工作流
 
@@ -140,6 +143,8 @@ figma-design-md-distiller/
 - 截图高宽比大于 `3:1`；
 - 用户明确反馈看不清。
 
+截图阈值优先依据 Figma metadata 中的原始节点尺寸。本地 PNG 经 MCP 导出后可能被等比缩放到 `1024px`，不能只用导出图片尺寸判断是否超宽或超高。
+
 主 `design.md` 直接引用截图上限为 `80` 张，超过后低频截图应移入 `references/screenshots/archive/` 或仅登记到 manifest。
 
 ### 增量合并
@@ -156,6 +161,23 @@ figma-design-md-distiller/
 - 节点状态。
 
 如果发现用户手工改过对应段落，Skill 必须生成建议 patch，不得直接覆盖。
+
+如果接入的是旧版 `design.md`，且没有 `extraction-manifest.md`，Skill 必须先从规范来源表、截图资产清单、组件清单和页面 Example 反推 manifest，再执行增量更新。
+
+## 压测记录
+
+已使用前期沉淀的数字浙江 PC 端 Figma 组件库素材做过规则压测。
+
+关键结果：
+
+- 旧 `design.md` 约 `84335` 字符，命中分卷阈值；
+- 识别到 `20` 行 Figma 来源；
+- 页面 example 覆盖 `10` 类；
+- `53` 个唯一截图引用全部存在；
+- `Message` 节点复现 `get_design_context` 失败，但 `get_metadata` + `get_screenshot` 成功，验证了 MCP 降级路径；
+- 压测后修正了截图阈值规则和旧规范 manifest 接入规则。
+
+详见 `PRESSURE_TEST.md`。
 
 ## 常用提示词
 
@@ -204,4 +226,3 @@ figma-design-md-distiller/
 ## 版本说明
 
 当前版本聚焦 PC 端管理后台、数字政务系统、组件库规范、页面模板和 HTML 原型生成场景。
-
