@@ -47,7 +47,8 @@ description: 将 Figma 组件库、页面样例、视觉规范和截图资产蒸
 
 - `design.md`：主规范，给下游原型生成模型读取；
 - `extraction-manifest.md`：Figma 节点级抽取状态与合并记录；
-- `screenshots/`：保留的清晰截图；
+- `screenshots/`：组件、页面、视觉 token 的本地清晰截图；
+- `screenshot-inventory.md`：截图资产清单，逐张说明截图对应的组件、页面、Figma 节点、用途和清晰度；
 - `references/contracts/`：当组件契约过多时拆分出的长契约；
 - `design-md-check.md`：质量检查报告。
 
@@ -88,7 +89,8 @@ description: 将 Figma 组件库、页面样例、视觉规范和截图资产蒸
 - 面向 HTML 原型生成，不写空泛审美描述；
 - 组件契约必须可执行，包含 class、尺寸、子结构、状态、禁止事项；
 - 页面 example 必须和组件清单分离；
-- 超宽、超高、过扁截图必须补局部截图；
+- 必须输出组件和页面截图；超宽、超高、过扁截图必须补局部截图；
+- 每张截图必须登记到 `screenshot-inventory.md`，不能只散落在 `screenshots/` 目录；
 - 已存在 `design.md` 时默认增量合并，保护用户手工修改；
 - 旧版 `design.md` 若没有 `extraction-manifest.md`，必须先从来源表、截图清单、组件清单和页面 Example 反推 manifest；
 - 组件契约超过 20 条时启动分卷，避免主 `design.md` 过大；
@@ -101,6 +103,7 @@ description: 将 Figma 组件库、页面样例、视觉规范和截图资产蒸
 设计规范/
   design.md
   extraction-manifest.md
+  screenshot-inventory.md
   design-md-check.md
   screenshots/
   references/

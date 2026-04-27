@@ -79,7 +79,7 @@ components-statistic-segment-row.png
 
 ## 截图资产清单
 
-`design.md` 或 `screenshot-inventory.md` 中必须维护截图清单。
+最终输出必须包含独立的 `screenshot-inventory.md`。`design.md` 可以保留关键截图引用，但不能替代完整截图清单。
 
 字段：
 
@@ -87,9 +87,20 @@ components-statistic-segment-row.png
 截图路径
 类型
 对应 Figma 节点
+对应对象
 用途
 清晰度状态
 备注
+```
+
+类型值必须使用以下枚举：
+
+```text
+page-overview
+page-detail
+component-overview
+component-detail
+token-overview
 ```
 
 清晰度状态：
@@ -101,6 +112,8 @@ components-statistic-segment-row.png
 已补局部
 模糊需重截
 ```
+
+每张输出截图都必须登记。若某个组件或页面没有截图，必须在 `design-md-check.md` 中说明原因和补图建议。
 
 ## 局部截图选择
 
@@ -129,6 +142,8 @@ components-statistic-segment-row.png
 交付前必须检查：
 
 - `design.md` 中引用的截图文件是否存在；
+- `screenshot-inventory.md` 是否存在；
+- `screenshots/` 中每张输出截图是否已登记；
 - 总览截图是否基于 Figma 节点原始尺寸过宽过扁；
 - 登录、详情、表单、看板等重要页面是否有局部截图；
 - 弹窗、提示、表格、导航等重要组件是否至少有一张清晰截图；

@@ -71,6 +71,7 @@ figma-design-md-distiller/
 设计规范/
   design.md
   extraction-manifest.md
+  screenshot-inventory.md
   design-md-check.md
   screenshots/
   references/
@@ -85,7 +86,8 @@ figma-design-md-distiller/
 | --- | --- |
 | `design.md` | 主规范，供 HTML 原型生成模型读取 |
 | `extraction-manifest.md` | 记录 Figma 节点、章节、截图、hash 和合并状态 |
-| `screenshots/` | 本地清晰截图资产 |
+| `screenshots/` | 组件、页面、视觉 token 的本地清晰截图资产 |
+| `screenshot-inventory.md` | 截图资产清单，逐张说明截图对应对象、Figma 节点、用途和清晰度 |
 | `references/contracts/` | 当组件契约过多时存放分卷契约 |
 | `design-md-check.md` | 质量检查报告 |
 
@@ -96,7 +98,7 @@ figma-design-md-distiller/
 1. 判断用户任务类型：新建、增量、补截图、质量检查；
 2. 使用 Figma MCP 读取 `get_design_context`、`get_metadata` 和 `get_screenshot`；
 3. 将节点分类为组件契约、页面 example、视觉 token、截图补充或待确认；
-4. 按截图治理规则保存总览图和局部图；
+4. 按截图治理规则保存总览图和局部图，并生成 `screenshot-inventory.md`；
 5. 写入或增量合并 `design.md`；
 6. 更新 `extraction-manifest.md`；
 7. 执行质量检查，输出风险项和待确认项。
@@ -134,6 +136,8 @@ figma-design-md-distiller/
 每个页面 example 必须包含 ASCII 骨架、依赖组件、布局规则和截图引用。
 
 ### 截图治理
+
+技能必须输出组件和页面截图。截图文件放入 `screenshots/`，并在 `screenshot-inventory.md` 中逐张登记。
 
 满足以下条件之一时必须补局部截图：
 
